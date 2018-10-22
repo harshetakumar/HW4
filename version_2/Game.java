@@ -130,6 +130,13 @@ public class Game {
         while (!userInput.toLowerCase().contains("quit") && !userInput.toLowerCase().contains("exit") && !currentPlace.name().toLowerCase().contains("exit")) {
 
             System.out.println("Location description: " + currentPlace.description());
+            System.out.println("Availabe Artifacts: ");
+            for(Artifact artifact: currentPlace.getAvailableArtifacts().values())
+            {
+                System.out.println(artifact.name() + ": " + artifact.description());
+                System.out.println("Mobility: " + artifact.size());
+                System.out.println("Value: " + artifact.value() + "\n");
+            }
 
             System.out.print("Enter a command>");
             userInput = scanner.nextLine();
