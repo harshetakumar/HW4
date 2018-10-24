@@ -18,7 +18,7 @@ public class GameTester {
 
         //Ask user for gdf file to read from
         System.out.print("Enter the game file name: ");
-        Scanner input = new Scanner(System.in);
+        Scanner input = KeyboardScanner.getKeyboardScanner();
         File file = new File(input.nextLine());
 
         //If unable to find file, then keep asking user until a valid file is entered
@@ -38,11 +38,12 @@ public class GameTester {
         Game myGame = new Game(input);
 
         //Close scanner for reading file
-
         input.close();
 
-        //Print out game information
-        myGame.print();
+        //Print out game information for debugging
+        //Character.printAll();
+        //myGame.print();
+        //Place.printAll();
 
         //Begin playing the game
         myGame.play();

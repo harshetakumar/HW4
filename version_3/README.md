@@ -1,9 +1,23 @@
-CS342 Homework 2
+CS342 Homework 3
 ================
 Giovanni Alanis UIN: 657681506
 ---------------
 ACCC: galani3
 ---------------
+
+####Compatibility: 
+This version of the game is compatible with GDF files version >3.0.  
+GDF files with version <4.0: The game will play with only one player as it was previously.  
+GDF files with version >4.0: The game will play with the players specified in the GDF file or if none are found, then it will notify
+users to input the number of players and create them. 
+
+NOTE: There will be a file of version >3.0 called mysticcity.gdf and a file of version 4.0 called mysticcity4.gdf
+
+####Updates to game
+- NPC characters are now present in the game.
+- AI has been implemented so NPC characters can execute the same moves as a normal player on their own, except for 'QUIT', 'EXIT',
+ 'INVENTORY', and 'LOOK'
+- Game now recognizes GDF file version and determines what to do.
 
 ####Getting Started: 
 
@@ -20,8 +34,10 @@ Once it runs it will first display my student information and then ask for the g
 will keep asking to enter a file name until a valid one is entered. 
 
 ####How to play: 
-The game starts by displaying the name of the game, starting location, description of the starting location, and the available directions the user can go.
-From there, the user is prompted to enter a command. The user can type in help to get a list of commands available in the game. 
+The game starts by displaying the name of the game. From there it will cycle through all the players displaying their
+starting location, description of the starting location, the available directions the user can go, any artifacts available, and any other characters present.
+From there, each player is prompted to enter a command. Once every player has entered a command, the screen will clear and it will notify the players on what happened
+based on the command they typed in. The user can type in help to get a list of commands available in the game. 
 The user can also input 'QUIT' or 'EXIT' to quit the game. 
 
 ####Navigation
@@ -45,12 +61,7 @@ inventory, then the game will notify them of this.
 The user can type in 'use XXX', where XXX is the artifact name that is currently in the user's inventory. The game will notify the user if anything happens once the 
 artifact is used as well if nothing happens. 
 
-
-####Extra Methods Used
-In this version of the project, I implemented a ScannerHelper class which was used to help parse the gdf file. The main methods implemented were finding the next empty line
+####Extra Helper Classes Used
+- Console: Used to print out new lines to give the illusion of the game display clearing
+- ScannerHelper: Used to help parse the gdf file. The main methods implemented were finding the next empty line
 in the file and scanning through the file until the next integer is found. 
-
-####Things to notice
-I noticed that when it came to searching for the file name on my IDE, I would have to use System.getProperty("user.dir") + /src/ + file name in the 
-File class to be able to find it correctly. Once I uploaded it to bert, the only way to find the file was to pass the file name directly to the 
-File class. The version I am submitting will be using the file name directly into the File class.
