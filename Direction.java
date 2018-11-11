@@ -51,7 +51,6 @@ public class Direction {
 
     }
 
-
     private int id;
     private Place from;
     private Place to;
@@ -59,7 +58,12 @@ public class Direction {
     private int lockPattern;
     private DirType directionType;
 
-
+    /**
+     * Creates a Direction object by passing in a file
+     *
+     * @param inputFile A file containing properties of a direction object
+     * @return Direction Object
+     */
     //Create a new direction object with its id, from, to, and direction
     Direction(Scanner inputFile) {
         String[] fileLine;
@@ -72,17 +76,14 @@ public class Direction {
             parsedFileLine = fileLine[0].trim().split("\\s+");
         }
 
-//        System.out.println("Id: " + parsedFileLine[0]);
-//        System.out.println("From: " + parsedFileLine[1]);
-//        System.out.println("Direction: " + parsedFileLine[2]);
-//        System.out.println("To: " + parsedFileLine[3]);
-//        System.out.println("Lock pattern: " + parsedFileLine[4]);
-//        System.out.println();
-
+        //Set the id
         this.id = Integer.parseInt(parsedFileLine[0].trim());
+
+        //Retrieve what the from place is going to be
         Place fromPlace = Place.getPlaceById(Integer.parseInt(parsedFileLine[1].trim()));
         this.from = fromPlace;
 
+        //Determine what direction type this direction will be
         if (parsedFileLine[2].equals("N")) {
             directionType = DirType.NORTH;
         } else if (parsedFileLine[2].equals("E")) {
@@ -123,9 +124,11 @@ public class Direction {
             directionType = null;
         }
 
+        //Check to see if the direction is locked or not
         if (parsedFileLine[3].trim().contains("-") || parsedFileLine[3].trim().matches("0")) {
             this.isLocked = true;
 
+            //Remove the negative if it is locked to get the place or check it is an exit
             if (parsedFileLine[3].trim().contains("-")) {
                 String[] split_to_id = parsedFileLine[3].split("-");
                 this.to = Place.getPlaceById(Integer.parseInt(split_to_id[1]));
@@ -136,8 +139,10 @@ public class Direction {
             this.to = Place.getPlaceById(Integer.parseInt(parsedFileLine[3].trim()));
         }
 
+        //Assign lock pattern
         this.lockPattern = Integer.parseInt(parsedFileLine[4]);
 
+        //Add this direction to the necessary place
         fromPlace.addDirection(this);
 
     }
@@ -168,7 +173,6 @@ public class Direction {
         if (!this.isLocked) {
             return this.to;
         } else {
-            System.out.println("This room is currently locked!");
             return this.from;
         }
 
@@ -176,21 +180,28 @@ public class Direction {
 
     //Print details about direction for debugging
     public void print() {
+        System.out.println("====================================");
+        System.out.println("    Direction: " + this.directionType.toString());
+        System.out.println("====================================");
         System.out.println("ID: " + this.id);
         System.out.println("From: " + this.from.name());
-        System.out.println("Direction: " + this.directionType.toString());
         System.out.println("To: " + this.to.name());
         System.out.println("Locked? : " + this.isLocked);
-        System.out.println("Lock Pattern: " + this.lockPattern);
+        System.out.println("Lock Pattern: " + this.lockPattern + "\n");
     }
 
+    //Attempt to use an artifact in this direction
     public boolean useKey(Artifact artifact) {
         if (artifact.use() > 0 && artifact.use() == this.lockPattern) {
             unlock();
-            System.out.println("* " + this.to.name() + " has been unlocked");
             return true;
         } else {
             return false;
         }
+    }
+
+    //Return the type of direction this is
+    public String directionType() {
+        return this.directionType.toString();
     }
 }
