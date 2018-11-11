@@ -21,7 +21,5 @@ public class Attack implements Move {
         //Deplete characters health
         this.character.depleteHealth(randomDamage);
 
-        System.out.println(character.name() + " lost " + randomDamage + " points of health");
-
     }
 }

@@ -22,13 +22,10 @@ public class Character {
      */
     public Character(Scanner inputFile, double version) {
 
-        if(version < 5.0) {
+        if (version < 5.0) {
             this.placeId = inputFile.nextInt();
             inputFile.nextLine();
-        }
-        else
-        {
-            inputFile.nextLine();   //Finish reaching the end of the line since we used .next() to get the type of character
+        } else {
             this.placeId = Integer.parseInt(inputFile.nextLine().split("//")[0].trim());
         }
 
@@ -165,27 +162,31 @@ public class Character {
     }
 
     //Update the character isPlaying if they decide to leave the game
-    public void leaveGame()
-    {
+    public void leaveGame() {
         this.isPlaying = false;
     }
 
     //Used to check if the current player is still in the game
-    public boolean isPlaying()
-    {
+    public boolean isPlaying() {
         return this.isPlaying;
     }
 
     //Display the character's current health
-    public int checkHealth()
-    {
+    public int checkHealth() {
         return this.health;
     }
 
     //Deplete the character's health
-    public void depleteHealth(int damage)
-    {
+    public void depleteHealth(int damage) {
         this.health -= damage;
+    }
+
+    //Increase the character's health
+    public void increaseHealth(int regeneration) {
+        this.health += regeneration;
+        if (this.health > 100) {
+            this.health = 100;
+        }
     }
 
 }
