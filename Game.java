@@ -123,9 +123,14 @@ public class Game {
                         Player player = new Player(inputFile, version);
                         characters.put(player.name(), player);
                         players++;
-                    } else {
+                    } 
+                    else if(type.equals("ATTACKER")){
                         Attacker npc = new Attacker(inputFile, version);
                         characters.put(npc.name(), npc);
+                    }
+                    else if(type.equals("GIVER")) {
+                    	Giver giver = new Giver(inputFile, version);
+                    	characters.put(giver.name(),giver);
                     }
 
                 }

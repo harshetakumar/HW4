@@ -6,6 +6,7 @@ public class Character {
     private int id;
     private int placeId;
     private int health = 100;
+    private static final int MAX_HEALTH = 100;
     private String name;
     private String description;
     private Place current;
@@ -186,6 +187,18 @@ public class Character {
     public void depleteHealth(int damage)
     {
         this.health -= damage;
+    }
+    
+    //Increase the character's health
+    public void increaseHealth(int lifePoints) {
+    	//check to make sure that the health does not exceed 100
+    	if(this.health < MAX_HEALTH) {
+    		this.health += lifePoints; 
+    		//if it does exceed 100pnts then set the health back to 100
+    		if(this.health >= MAX_HEALTH) {
+    			this.health = MAX_HEALTH;
+    		}
+    	}
     }
 
 }
