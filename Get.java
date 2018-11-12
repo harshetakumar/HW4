@@ -26,22 +26,32 @@ public class Get implements Move {
         //Else if it is a NPC, then we can suppress the output.
         if (this.character instanceof Player) {
 
-            //Check if the place contains the artifact the character is trying to pickup
-            if (this.place.getAvailableArtifacts().containsKey(this.artifact)) {
+            //Check to see if the place is illuminated first to be able to get an artifact
+            if (place.checkIllumination()) {
 
-                //If found, then add artifact to character's inventory and then remove it from the place
-                this.character.addArtifact(this.place.getAvailableArtifacts().get(this.artifact));
-                this.place.removeArtifact(this.artifact);
+                //Check if the place contains the artifact the character is trying to pickup
+                if (this.place.getAvailableArtifacts().containsKey(this.artifact)) {
 
-                //Notify the user of event
+                    //If found, then add artifact to character's inventory and then remove it from the place
+                    this.character.addArtifact(this.place.getAvailableArtifacts().get(this.artifact));
+                    this.place.removeArtifact(this.artifact);
+
+                    //Notify the user of event
+                    System.out.println("================================================");
+                    System.out.println("* PLAYER: " + character.name() + " added " + this.artifact + " to their inventory");
+                    System.out.println("================================================\n");
+                } else {
+
+                    //Notify user if artifact is not available
+                    System.out.println("================================================");
+                    System.out.println("* PLAYER: " + character.name() + " tried picking up " + this.artifact + ", but failed miserably");
+                    System.out.println("================================================\n");
+                }
+            }
+            else
+            {
                 System.out.println("================================================");
-                System.out.println("PLAYER: " + character.name() + " added " + this.artifact + " to their inventory");
-                System.out.println("================================================\n");
-            } else {
-
-                //Notify user if artifact is not available
-                System.out.println("================================================");
-                System.out.println("PLAYER: " + character.name() + " tried picking up " + this.artifact + ", but failed miserably");
+                System.out.println("* PLAYER: " + character.name() + " tried getting an item, but forgot it is completely dark");
                 System.out.println("================================================\n");
             }
         } else {

@@ -46,6 +46,10 @@ public class Use implements Move {
                     //Remove the item from player's inventory once it has been used
                     this.character.removeArtifact(this.artifact);
 
+                } else if (retrievedArtifact instanceof LightArtifact) {
+
+                    //If the retrieved artifact is a light, then the place will try to illuminate itself
+                    this.place.use(retrievedArtifact);
                 } else {
                     //Try using specified artifact in current place and check if anything happened
                     if (this.place.useKey(retrievedArtifact)) {

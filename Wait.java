@@ -3,6 +3,10 @@
  */
 public class Wait implements Move {
 
+    private enum Reason {
+
+    }
+
     public Wait() {
 
     }

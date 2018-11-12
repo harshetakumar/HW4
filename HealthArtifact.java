@@ -1,18 +1,17 @@
 import java.util.Scanner;
 
-public class HealthArtifact extends Artifact  {
+public class HealthArtifact extends Artifact {
 
-    private int healthRegeneration = 25;
+    private int healthRegeneration;
 
-    public HealthArtifact(Scanner inputFile)
-    {
+    public HealthArtifact(Scanner inputFile, int healthRegeneration) {
         super(inputFile);
+        this.healthRegeneration = healthRegeneration;
     }
 
     @Override
-    public int use()
-    {
-       return this.healthRegeneration;
+    public int use() {
+        return this.healthRegeneration;
     }
 
 }

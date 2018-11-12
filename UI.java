@@ -20,8 +20,7 @@ public class UI implements DecisionMaker {
         }
 
         //Also check to see if the player has no more health, if so then take out the player from the game
-        if(character.checkHealth() <= 0)
-        {
+        if (character.checkHealth() <= 0) {
             return new Died(character);
         }
 
@@ -30,7 +29,15 @@ public class UI implements DecisionMaker {
         System.out.println("PLAYER: " + character.name());
         System.out.println("Health: " + character.checkHealth() + "/100");
         System.out.println("==============================");
-        System.out.println("Current Location: " + place.name() + ": " + place.description());
+
+        if (!place.checkIllumination()) {
+            //Notify user that the place is dark
+            System.out.println("This place is pitch black. You can't even see your hands in front of you.");
+        } else {
+            //If the current place is not a dark place then the user can see the location and directions
+            System.out.println("Current Location: " + place.name() + ": " + place.description());
+        }
+
 
         //Checks to see if the current place has any available artifacts to display
         if (place.getAvailableArtifacts().size() > 0) {
@@ -71,6 +78,7 @@ public class UI implements DecisionMaker {
         }
         //If user types in get then try to pick up artifact in current location
         else if (userInput.toLowerCase().trim().startsWith("get")) {
+
             String[] getArtifact = userInput.toLowerCase().split("get");
             String artifact = getArtifact[1].trim();
             return new Get(place, character, artifact);
@@ -83,6 +91,7 @@ public class UI implements DecisionMaker {
         }
         //If user types in use, then try to use the specified artifact to see if it does anything based on the current location
         else if (userInput.toLowerCase().trim().startsWith("use")) {
+
             String[] useArtifact = userInput.toLowerCase().split("use");
             String artifact = useArtifact[1].trim();
             return new Use(place, character, artifact);
