@@ -1,4 +1,5 @@
 import java.util.Random;
+import java.util.Scanner;
 
 public class Give implements Move {
 	
@@ -12,6 +13,14 @@ public class Give implements Move {
 	}
 	
 	public void execute() {
+		
+		//Message that the Leprechaun says before giving away health
+		System.out.printf("-------------------------------------------------------\n\n");
+		System.out.println("I am the Leprechaun and I am feeling very lucky today!");
+		System.out.println("You, my friend, seem a bit down! Here are some health points\n\n");
+		System.out.printf("-------------------------------------------------------");
+		System.out.printf("\n");
+		
 		Random rand = new Random(); 
 		
 		//Generate random health to give to the selected character
@@ -20,7 +29,7 @@ public class Give implements Move {
 		//Increase the characters health
 		this.character.increaseHealth(randomReplenish);
 		
-		System.out.println(character.name() + "gained" + randomReplenish + " points of health");
+		System.out.println(character.name() + " gained " + randomReplenish + " points of health");
 	}
 
 }

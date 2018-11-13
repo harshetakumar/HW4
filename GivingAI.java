@@ -12,7 +12,7 @@ public class GivingAI implements DecisionMaker {
 	        int randomMove = rand.nextInt(3);
 
 
-	        System.out.println("Replenishing health for : " + character.name());
+	        System.out.println("Getting health from : " + character.name());
 
 	        //Get all the available characters from current place to see who to give health to
 	        HashMap<String, Character> availableCharacters = place.getCharacters();
