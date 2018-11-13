@@ -148,13 +148,13 @@ PLAYER 		 12		// A player in the Entrance Hall, where expected
 Zaphod Beeblebrox is the President of the Universe
 He has 2 heads and 3 arms, and likes to have a good time.
 
-NPC		13		// An Ogre for the Ogre's Lair
+ATTACKER		13		// An Ogre for the Ogre's Lair
 2		The Ugly Green Ogre
 2
 The Ugly Green Ogre is huge, green, slimy, and ill-tempered.
 He can't stand up in a normal room, which has lead to a permanent slouch.
 
-NPC		0		//  Where oh where can the Leprechaun be ?
+GIVER		22		//  Where oh where can the Leprechaun be ?
 3		A Cheerful Leprechaun
 1
 The Cheerful Leprechaun sings and dances about his pot o' gold !
