@@ -30,6 +30,11 @@ public class GivingAI implements DecisionMaker {
 	                	//Used for more debugging
 	                    //System.out.println(character.name() + " is going to give health points " + availableCharacter.name());
 
+                        //Notify player who are they receiving health from
+                        System.out.println("================================================");
+                        System.out.println("* " + character.name() + " is healing you");
+                        System.out.println("================================================");
+
 	                    //Create health object on selected character
 	                    return new Give(place, availableCharacter);
 	                }

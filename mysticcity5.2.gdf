@@ -154,7 +154,7 @@ DIRECTIONS 35	//Thirty five directions defined ( No number 15 )
 
 // CHARACTERS section is new, and has not been tested
 
-CHARACTERS 4	// Really should have more, but let's start with two of each.
+CHARACTERS 6	// Really should have more, but let's start with two of each.
 
 PLAYER 		 // A player
 12			 // in the Entrance Hall, where expected
@@ -163,14 +163,14 @@ PLAYER 		 // A player
 Zaphod Beeblebrox is the President of the Universe
 He has 2 heads and 3 arms, and likes to have a good time.
 
-NPC	    ATTACKER	// An Ogre is a non-player character
+NPC	    NORMAL	// An Ogre is a non-player character
 13		// Hanging out in the Ogre's Lair
 2		The Ugly Green Ogre
 2
 The Ugly Green Ogre is huge, green, slimy, and ill-tempered.
 He can't stand up in a normal room, which has lead to a permanent slouch.
 
-NPC	    GIVER	//  Where oh where can the Leprechaun be ?
+NPC	    NORMAL	//  Where oh where can the Leprechaun be ?
 0		//  Where oh where can the Leprechaun be ?
 3		A Cheerful Leprechaun
 1
@@ -183,6 +183,18 @@ PLAYER		// A player in a random spot?  Interesting!
 This lost wanderer needs help.
 He took a wrong turn somewhere, and now can't find the way out!
 Not all who wander are lost, but this one is.
+
+NPC     GIVER   //A fairy who heals you on your adventure
+22
+11      Magical Fairy
+1
+A magical fairy who heals players on their enduring adventure
+
+NPC     ATTACKER
+105
+12      Three-headed cyclops
+1
+A cyclops who has three heads. Make sure not to stare directly into their eyes!
 
 
 ARTIFACTS	16	// Semi-random artifacts - New ones at the beginning.
