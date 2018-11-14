@@ -69,7 +69,7 @@ public class Direction {
         String[] fileLine;
         String[] parsedFileLine;
 
-        fileLine = inputFile.nextLine().split("//");
+        fileLine = ScannerHelper.getEmptyLine(inputFile).split("//");
         parsedFileLine = fileLine[0].split("\\s+");
         while (parsedFileLine[0].isEmpty()) {
             fileLine = inputFile.nextLine().split("//");

@@ -31,14 +31,32 @@ public class Use implements Move {
 
                 //Notify player of the event
                 System.out.println("================================================");
-                System.out.println("PLAYER: " + character.name() + " used " + this.artifact);
+                System.out.println("* PLAYER: " + character.name() + " used " + this.artifact);
                 System.out.println("================================================");
 
-                //Try using specified artifact in current place and check if anything happened
-                if (this.place.useKey(this.character.retrieveArtifactFromInventory(this.artifact))) {
-                    System.out.println("A door was unlocked\n");
+                //Retrieve artifact
+                Artifact retrievedArtifact = this.character.retrieveArtifactFromInventory(this.artifact);
+
+                //Check to see what type of artifact it is and how it should be used
+                if (retrievedArtifact instanceof HealthArtifact) {
+
+                    //Increase health if artifact is a health regeneration item
+                    this.character.increaseHealth(retrievedArtifact.use());
+
+                    //Remove the item from player's inventory once it has been used
+                    this.character.removeArtifact(this.artifact);
+
+                } else if (retrievedArtifact instanceof LightArtifact) {
+
+                    //If the retrieved artifact is a light, then the place will try to illuminate itself
+                    this.place.use(retrievedArtifact);
                 } else {
-                    System.out.println("Nothing happened\n");
+                    //Try using specified artifact in current place and check if anything happened
+                    if (this.place.useKey(retrievedArtifact)) {
+                        System.out.println("A door was unlocked\n");
+                    } else {
+                        System.out.println("Nothing happened\n");
+                    }
                 }
             } else {
                 System.out.println("Can't use it if you don't have it");

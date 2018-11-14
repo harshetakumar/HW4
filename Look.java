@@ -20,32 +20,42 @@ public class Look implements Move {
     @Override
     public void execute() {
 
-        //Notify user of event
-        System.out.println("================================================");
-        System.out.println("PLAYER: " + character.name() + " looked around");
-        System.out.println("================================================");
-        System.out.println("Current location: " + this.place.name());
+        if (place.checkIllumination()) {
+            //Notify user of event
+            System.out.println("================================================");
+            System.out.println("* PLAYER: " + character.name() + " looked around");
+            System.out.println("================================================");
+            System.out.println("Current location: " + this.place.name());
 
-        System.out.println();
-
-        //Print out any artifacts available if there is any
-        if (this.place.getAvailableArtifacts().size() > 0) {
-            System.out.println("Artifacts Available: ");
-            for (Artifact artifact : this.place.getAvailableArtifacts().values()) {
-                System.out.println(">" + artifact.name() + ": " + artifact.description());
-            }
             System.out.println();
-        }
 
-        //Prints out any characters available if there is any
-        if (this.place.getCharacters().size() > 1) {
-            System.out.println("Characters Present: ");
-            for (Character character : this.place.getCharacters().values()) {
-                //Print out all the other characters in the current place not including the current character
-                if (this.character.name() != character.name()) {
-                    character.display();
+            //Print out any artifacts available if there is any
+            if (this.place.getAvailableArtifacts().size() > 0) {
+                System.out.println("Artifacts Available: ");
+                for (Artifact artifact : this.place.getAvailableArtifacts().values()) {
+                    System.out.println(">" + artifact.name() + ": " + artifact.description());
+                }
+                System.out.println();
+            }
+
+            //Prints out any characters available if there is any
+            if (this.place.getCharacters().size() > 1) {
+                System.out.println("Characters Present: ");
+                for (Character character : this.place.getCharacters().values()) {
+                    //Print out all the other characters in the current place not including the current character
+                    if (this.character.name() != character.name()) {
+                        character.display();
+                    }
                 }
             }
+        }
+
+        //If the place is dark, then let the player know they are not allowed to look around
+        else
+        {
+            System.out.println("=====================================================================================");
+            System.out.println("* PLAYER: " + character.name() + " tried looking around, but the place is pitch black");
+            System.out.println("=====================================================================================");
         }
 
         System.out.println();

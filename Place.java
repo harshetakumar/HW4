@@ -11,6 +11,7 @@ public class Place {
     private int id;
     private String name;
     private String description;
+    protected boolean illuminated = true;
     private ArrayList<Direction> directions = new ArrayList<Direction>();
     private HashMap<String, Artifact> availableArtifacts = new HashMap<String, Artifact>();
     private HashMap<String, Character> characters = new HashMap<String, Character>();
@@ -181,9 +182,7 @@ public class Place {
         for (Place place : availablePlaces.values()) {
             if (counter == rand_int && (place.id != 0 || place.id != 1)) {
                 return place;
-            }
-            else if(counter == rand_int && (place.id == 0 || place.id == 1))
-            {
+            } else if (counter == rand_int && (place.id == 0 || place.id == 1)) {
                 counter = 0;
                 rand_int = rand.nextInt(availablePlaces.size());
             }
@@ -221,4 +220,16 @@ public class Place {
     public HashMap<String, Character> getCharacters() {
         return this.characters;
     }
+
+
+    //Template for using a specific artifact in the place. This will be overriden by child classes
+    public void use(Artifact artifact) {
+
+    }
+
+    //Check to the illumination of the current place
+    public boolean checkIllumination() {
+        return this.illuminated;
+    }
+
 }
