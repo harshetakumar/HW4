@@ -12,7 +12,8 @@ public class GivingAI implements DecisionMaker {
 	        int randomMove = rand.nextInt(3);
 
 
-	        System.out.println("Getting health from : " + character.name());
+	        //Used for debugging purposes
+	        //System.out.println("Getting health from : " + character.name());
 
 	        //Get all the available characters from current place to see who to give health to
 	        HashMap<String, Character> availableCharacters = place.getCharacters();
@@ -25,7 +26,9 @@ public class GivingAI implements DecisionMaker {
 	            for (Character availableCharacter : availableCharacters.values()) {
 	                //Check to see when the counter equals the randomly selected number, check to make sure the character we give health to is only a player, check the player is still playing
 	                if (counter == randomCharacter && availableCharacter instanceof Player && availableCharacter.isPlaying()) {
-	                    System.out.println(character.name() + " is going to give health points " + availableCharacter.name());
+
+	                	//Used for more debugging
+	                    //System.out.println(character.name() + " is going to give health points " + availableCharacter.name());
 
 	                    //Create health object on selected character
 	                    return new Give(place, availableCharacter);
