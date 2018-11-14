@@ -27,11 +27,15 @@ NOTE: There will be a file of version 5.2 called mysticcity5.2.gdf to be used.
 - Harsheta Kumar
     - Giver will heal any player that is in the same Place as the player and notify them that they are being healed. 
     - Added GivingAI for GIVER to heal any players in current place. 
+    - Giver randomly gives the selected character a random number of health points. If the character recieves a number of health points that would result in the health points exceeding 100, then their health is just set to the maximum number of points which is a hundred. 
     - Give move takes in a character and randomly decides how much health to regenerate. 
 
 - Pracchi Thakkar
     - Place has been extended to implement dark places in the map. 
     - DarkPlace can be illuminated using LightArtifacts. 
+
+### Note: 
+The gdf file was modified so that the Leprechuan is a Giver and the Ogre is an Attacker. 
 
 #### Getting Started: 
 
