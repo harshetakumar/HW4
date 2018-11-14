@@ -148,7 +148,6 @@ public class Game {
                             Giver giver = new Giver(inputFile, version);
                             characters.put(giver.name(), giver);
                         } else {
-                            System.out.println("NPC version: " + parsedFileLine[1]);
                             Attacker attacker = new Attacker(inputFile, version);
                             characters.put(attacker.name(), attacker);
                         }

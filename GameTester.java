@@ -12,13 +12,9 @@ public class GameTester {
     public static void main(String[] args) {
 
         //Print out student information
-        System.out.println("Giovanni Alanis");
-        System.out.println("ACCC: galani3");
-        System.out.println("Harsheta Kumar");
-        System.out.println("ACCC: hkumar7");
-        System.out.println("Prachi Thakkar");
-        System.out.println("ACCC: pthakk23");
-        System.out.println("UIN: 657681506\n");
+        System.out.println("Giovanni Alanis ACCC: galani3");
+        System.out.println("Harsheta Kumar  ACCC: hkumar7");
+        System.out.println("Prachi Thakkar  ACCC: pthakk23\n");
 
         //Ask user for gdf file to read from
         System.out.print("Enter the game file name: ");
