@@ -21,7 +21,7 @@ NPC characters are now present in the game.
 AI has been implemented so NPC characters can execute the same moves as a normal player on their own, except for 'QUIT', 'EXIT', 'INVENTORY', and 'LOOK'
 Game now recognizes GDF file version and determines what to do.
 
-Giver NPC: The gdf file was modified so that the Leprechuan is a giver and the Ogre is an attacker. The Leprechaun is located in the Pool of Enchantment. The NPC randomly gives the selected character a random number of health points. If the character recieves a number of health points that would result in the health points exceeding 100, then their health is just set to the maximum number of points which is a hundred. 
+Character seciton Giver NPC: Created a giver NPC by creating 3 classes, Give, GivingAI, Giver. The gdf file was modified so that the Leprechuan is a giver and the Ogre is an attacker. The Leprechaun is located in the Pool of Enchantment. The NPC randomly gives the selected character a random number of health points. If the character recieves a number of health points that would result in the health points exceeding 100, then their health is just set to the maximum number of points which is a hundred. 
 
 ####Getting Started:
 
