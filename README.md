@@ -14,21 +14,24 @@ NOTE: There will be a file of version 5.2 called mysticcity5.2.gdf to be used.
 
 #### Updates to game:
 
+- Giovanni Alanis
+    - NPC characters can now be of type Attacker or Giver. 
+    - Attacker will deal damage to any player that is in the same Place and notify the player that they are being attacked.
+    - Artifacts have now been extended to HealthArtifacts and LightArtifacts. 
+    - HealthArtifacts will recover a player's health by a certain amount. 
+    - LightArtifacts will illuminate a Place if it is of type DarkPlace and it is currently dark.
+    - Died move will notify the user if they have health less than zero and remove them from the game. 
+    - Added AttackingAI for Attacker to randomly pick when an attacker will deal damage. 
+    - Attack move takes in a character to deal random damage to. 
 
-- NPC characters can now be of type Attacker or Giver. 
-- Attacker will deal damage to any player that is in the same Place and notify the player that they are being attacked.
-- Giver will heal any player that is in the same Place as the player and notify them that they are being healed. 
-- Artifacts have now been extended to HealthArtifacts and LightArtifacts. 
-- HealthArtifacts will recover a player's health by a certain amount. 
-- LightArtifacts will illuminate a Place if it is of type DarkPlace and it is currently dark.
-- Place has been extended to implement dark places in the map. 
-- DarkPlace can be illuminated using LightArtifacts. 
-- Added AttackingAI for Attacker to randomly pick when an attacker will deal damage. 
-- Added GivingAI for GIVER to heal any players in current place. 
-- Move has now been extended with Attack, Died, and Give. 
-- Attack move takes in a character to deal random damage to. 
-- Died move will notify the user if they have health less than zero and remove them from the game. 
-- Give move takes in a character and randomly decides how much health to regenerate. 
+- Harsheta Kumar
+    - Giver will heal any player that is in the same Place as the player and notify them that they are being healed. 
+    - Added GivingAI for GIVER to heal any players in current place. 
+    - Give move takes in a character and randomly decides how much health to regenerate. 
+
+- Pracchi Thakkar
+    - Place has been extended to implement dark places in the map. 
+    - DarkPlace can be illuminated using LightArtifacts. 
 
 #### Getting Started: 
 
