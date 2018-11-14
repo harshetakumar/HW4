@@ -1,25 +1,36 @@
-CS342 Homework 3
-================
-Giovanni Alanis UIN: 657681506
----------------
-ACCC: galani3
----------------
+# CS342 Homework 4
+Giovanni Alanis, Harsheta Kumar, Pracchi Thakkar
+____
 
-####Compatibility: 
+
+#### Compatibility: 
 This version of the game is compatible with GDF files version >3.0.  
-GDF files with version <4.0: The game will play with only one player as it was previously.  
+
 GDF files with version >4.0: The game will play with the players specified in the GDF file or if none are found, then it will notify
 users to input the number of players and create them. 
+GDF files with version <4.0: The game will play with only one player as it was previously.  
 
-NOTE: There will be a file of version >3.0 called mysticcity.gdf and a file of version 4.0 called mysticcity4.gdf
+NOTE: There will be a file of version 5.2 called mysticcity5.2.gdf to be used.
 
-####Updates to game
-- NPC characters are now present in the game.
-- AI has been implemented so NPC characters can execute the same moves as a normal player on their own, except for 'QUIT', 'EXIT',
- 'INVENTORY', and 'LOOK'
-- Game now recognizes GDF file version and determines what to do.
+#### Updates to game:
 
-####Getting Started: 
+
+- NPC characters can now be of type Attacker or Giver. 
+- Attacker will deal damage to any player that is in the same Place and notify the player that they are being attacked.
+- Giver will heal any player that is in the same Place as the player and notify them that they are being healed. 
+- Artifacts have now been extended to HealthArtifacts and LightArtifacts. 
+- HealthArtifacts will recover a player's health by a certain amount. 
+- LightArtifacts will illuminate a Place if it is of type DarkPlace and it is currently dark.
+- Place has been extended to implement dark places in the map. 
+- DarkPlace can be illuminated using LightArtifacts. 
+- Added AttackingAI for Attacker to randomly pick when an attacker will deal damage. 
+- Added GivingAI for GIVER to heal any players in current place. 
+- Move has now been extended with Attack, Died, and Give. 
+- Attack move takes in a character to deal random damage to. 
+- Died move will notify the user if they have health less than zero and remove them from the game. 
+- Give move takes in a character and randomly decides how much health to regenerate. 
+
+#### Getting Started: 
 
 To start playing this game, all you have to do is run make and it will automatically compile and run the game. 
 The Makefile also includes a make clean command to remove the .class files and clean up the directory. 
@@ -30,38 +41,39 @@ make        //Compiles and runs java program
 ```
 make clean  //Removes .class files and cleans up directory file 
 ```
-Once it runs it will first display my student information and then ask for the gdf file to load from. If an invalid file name is entered, then the program 
+Once it runs it will first display our student information and then ask for the gdf file to load from. If an invalid file name is entered, then the program 
 will keep asking to enter a file name until a valid one is entered. 
+In this case, will be using the provided mysticcity5.2.gdf file. 
 
-####How to play: 
+#### How to play: 
 The game starts by displaying the name of the game. From there it will cycle through all the players displaying their
 starting location, description of the starting location, the available directions the user can go, any artifacts available, and any other characters present.
 From there, each player is prompted to enter a command. Once every player has entered a command, the screen will clear and it will notify the players on what happened
 based on the command they typed in. The user can type in help to get a list of commands available in the game. 
 The user can also input 'QUIT' or 'EXIT' to quit the game. 
 
-####Navigation
+#### Navigation
 The user can navigate through the game by typing in of the format 'GO XXX', where XXX can be any direction from the standard compass. 
 Once a user has inputted direction, the game will check and display to the user and updated location based on whether the direction entered is available.
 If a certain direction turns out to be locked, then the game will notify the user that the direction inputted is currently locked. 
 
-####Inventory
+#### Inventory
 The user can type in 'inv' or 'inventory' to display any current artifacts the user is holding. 
 
-####Artifacts
-#####Picking Items 
+#### Artifacts
+##### Picking Items 
 The user can type in 'get XXX', where XXX is the artifact name that is available in the current location. If the user types in an artifact that is not available, 
 then the game will notify them of this.
 
-#####Dropping Items
+##### Dropping Items
 The user can type in 'drop XXX', where XXX is the artifact name that is currently in the user's inventory. If the user tries to drop an artifact that is not in the 
 inventory, then the game will notify them of this. 
 
-#####Using Items
+##### Using Items
 The user can type in 'use XXX', where XXX is the artifact name that is currently in the user's inventory. The game will notify the user if anything happens once the 
 artifact is used as well if nothing happens. 
 
-####Extra Helper Classes Used
+#### Extra Helper Classes Used
 - Console: Used to print out new lines to give the illusion of the game display clearing
 - ScannerHelper: Used to help parse the gdf file. The main methods implemented were finding the next empty line
 in the file and scanning through the file until the next integer is found. 
