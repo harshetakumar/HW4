@@ -1,5 +1,5 @@
 # CS342 Homework 4
-Giovanni Alanis, Harsheta Kumar, Pracchi Thakkar
+Giovanni Alanis, Harsheta Kumar, Prachi Thakkar
 ____
 
 
