@@ -4,6 +4,7 @@
 public class NotFound implements Move {
 
     private Character character;
+    private IO io = new IO();
 
     public NotFound(Character character) {
         this.character = character;
@@ -11,8 +12,8 @@ public class NotFound implements Move {
 
     @Override
     public void execute() {
-        System.out.println("================================================");
-        System.out.println("PLAYER: " + character.name() + " did nothing");
-        System.out.println("================================================\n");
+        io.display("================================================");
+        io.display("PLAYER: " + character.name() + " did nothing");
+        io.display("================================================\n");
     }
 }

@@ -5,6 +5,8 @@ import java.util.Random;
 
 public class AI implements DecisionMaker {
 
+    private IO io = new IO();
+
     /**
      * Returns a move object that a NPC will execute based on which randomly generated number is picked.
      *
@@ -16,7 +18,7 @@ public class AI implements DecisionMaker {
     public Move getMove(Character character, Place place) {
 
         //Used to debug what the status of the NPC characters are currently. If you want to check what
-        //move the NPC is doing then we would just uncomment the System.out.println() in each move
+        //move the NPC is doing then we would just uncomment the io.display() in each move
         //character.print();
 
         Random rand = new Random();
@@ -26,7 +28,7 @@ public class AI implements DecisionMaker {
 
         //AI Go
         if (randomMove == 0) {
-            //System.out.println(character.name() + " is performing Go operation");
+            //io.display(character.name() + " is performing Go operation");
 
             //Get available directions from current place
             ArrayList<Direction> availableDirections = place.getDirections();
@@ -41,7 +43,7 @@ public class AI implements DecisionMaker {
         }
         //AI Get
         else if (randomMove == 1) {
-            //System.out.println(character.name() + " is performing Get operation");
+            //io.display(character.name() + " is performing Get operation");
 
             //Get available artifacts from current place
             HashMap<String, Artifact> availableArtifacts = place.getAvailableArtifacts();
@@ -65,7 +67,7 @@ public class AI implements DecisionMaker {
         }
         //AI Drop
         else if (randomMove == 2) {
-            //System.out.println(character.name() + " is performing Drop operation");
+            //io.display(character.name() + " is performing Drop operation");
 
             //Get all the inventory from the NPC
             HashMap<String, Artifact> characterInventory = character.retrieveInventory();
@@ -89,7 +91,7 @@ public class AI implements DecisionMaker {
         }
         //AI Use
         else if (randomMove == 3) {
-            //System.out.println(character.name() + " is performing Use operation");
+            //io.display(character.name() + " is performing Use operation");
 
             //Get the inventory from the NPC
             HashMap<String, Artifact> characterInventory = character.retrieveInventory();

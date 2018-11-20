@@ -11,6 +11,7 @@ public class Place {
     private int id;
     private String name;
     private String description;
+    private static IO io = new IO();
     protected boolean illuminated = true;
     private ArrayList<Direction> directions = new ArrayList<Direction>();
     private HashMap<String, Artifact> availableArtifacts = new HashMap<String, Artifact>();
@@ -88,42 +89,42 @@ public class Place {
 
     //Print details about place for debugging
     public static void printAll() {
-        System.out.println("Number of places: " + availablePlaces.size());
+        io.display("Number of places: " + availablePlaces.size());
         for (Place place : availablePlaces.values()) {
-            System.out.println("----------------- BEGIN ---------------------");
+            io.display("----------------- BEGIN ---------------------");
             place.print();
 
-            System.out.println("Available Characters: ");
+            io.display("Available Characters: ");
             for (Character character : place.characters.values()) {
                 character.print();
             }
 
-            System.out.println("Available Directions: ");
+            io.display("Available Directions: ");
             for (Direction direction : place.directions) {
                 direction.print();
             }
-            System.out.println("Available Artifacts: ");
+            io.display("Available Artifacts: ");
             for (Artifact artifact : place.availableArtifacts.values()) {
                 artifact.print();
             }
-            System.out.println("----------------- END -----------------------\n");
+            io.display("----------------- END -----------------------\n");
         }
     }
 
     //A more simplified version of printAll, but for only displaying the place
     public void print() {
-        System.out.println("====================================");
-        System.out.println("    Place: " + this.name);
-        System.out.println("====================================");
-        System.out.println("ID: " + this.id);
-        System.out.println("Description: " + this.description + "\n");
+        io.display("====================================");
+        io.display("    Place: " + this.name);
+        io.display("====================================");
+        io.display("ID: " + this.id);
+        io.display("Description: " + this.description + "\n");
 
     }
 
     //Used in game to display any places
     public void display() {
-        System.out.println(">" + this.name);
-        System.out.println("Description: " + this.description);
+        io.display(">" + this.name);
+        io.display("Description: " + this.description);
     }
 
     //Adds a specified artifact to the place
@@ -162,7 +163,7 @@ public class Place {
         if (availablePlaces.containsKey(id)) {
             return availablePlaces.get(id);
         } else {
-            System.out.println("Could not find Place with Id: " + id);
+            io.display("Could not find Place with Id: " + id);
             return null;
         }
     }
@@ -207,7 +208,7 @@ public class Place {
             //If so then remove the character
             characters.remove(characterName);
         } else {
-            System.out.println("There doesn't seem to be a character at this location");
+            io.display("There doesn't seem to be a character at this location");
         }
     }
 

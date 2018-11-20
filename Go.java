@@ -3,6 +3,7 @@ public class Go implements Move {
     private Place place;
     private String direction;
     private Character character;
+    private IO io = new IO();
 
     /**
      * Creates a Go object for a character trying to move in a certain direction
@@ -32,17 +33,17 @@ public class Go implements Move {
 
         //If it is a player and a new place is returned, then the player has moved successfully
         if (!attemptedPlace.equals(this.place) && this.character instanceof Player) {
-            System.out.println("================================================");
-            System.out.println("PLAYER: " + character.name() + " went " + this.direction);
-            System.out.println("================================================");
+            io.display("================================================");
+            io.display("PLAYER: " + character.name() + " went " + this.direction);
+            io.display("================================================");
             this.place = attemptedPlace;
         }
 
         //If the same place is returned in where the player was in, then that means the direction was locked or non existant
         else if (attemptedPlace.equals(this.place) && this.character instanceof Player) {
-            System.out.println("================================================");
-            System.out.println("PLAYER: " + character.name() + " tried going " + this.direction + ", but either the door was locked or you cannot head in that direction");
-            System.out.println("================================================");
+            io.display("================================================");
+            io.display("PLAYER: " + character.name() + " tried going " + this.direction + ", but either the door was locked or you cannot head in that direction");
+            io.display("================================================");
         }
 
         //Add the character to the new location

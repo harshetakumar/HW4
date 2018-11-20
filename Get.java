@@ -2,6 +2,7 @@ public class Get implements Move {
     private Place place;
     private Character character;
     private String artifact;
+    private IO io = new IO();
 
     /**
      * Creates a Get object for a character trying to pickup a certain item
@@ -37,22 +38,20 @@ public class Get implements Move {
                     this.place.removeArtifact(this.artifact);
 
                     //Notify the user of event
-                    System.out.println("================================================");
-                    System.out.println("* PLAYER: " + character.name() + " added " + this.artifact + " to their inventory");
-                    System.out.println("================================================\n");
+                    io.display("================================================");
+                    io.display("* PLAYER: " + character.name() + " added " + this.artifact + " to their inventory");
+                    io.display("================================================\n");
                 } else {
 
                     //Notify user if artifact is not available
-                    System.out.println("================================================");
-                    System.out.println("* PLAYER: " + character.name() + " tried picking up " + this.artifact + ", but failed miserably");
-                    System.out.println("================================================\n");
+                    io.display("================================================");
+                    io.display("* PLAYER: " + character.name() + " tried picking up " + this.artifact + ", but failed miserably");
+                    io.display("================================================\n");
                 }
-            }
-            else
-            {
-                System.out.println("================================================");
-                System.out.println("* PLAYER: " + character.name() + " tried getting an item, but forgot it is completely dark");
-                System.out.println("================================================\n");
+            } else {
+                io.display("================================================");
+                io.display("* PLAYER: " + character.name() + " tried getting an item, but forgot it is completely dark");
+                io.display("================================================\n");
             }
         } else {
 
@@ -66,7 +65,7 @@ public class Get implements Move {
 
             } else {
                 //For debugging, just in case somehow this event occurs
-                System.out.println("Error: NPC trying to pickup item that does not exist");
+                io.display("Error: NPC trying to pickup item that does not exist");
             }
         }
     }

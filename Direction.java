@@ -8,6 +8,7 @@ import java.util.Scanner;
 
 public class Direction {
 
+    private IO io = new IO();
     private enum DirType {
         NORTH("NORTH", "N"),
         SOUTH("SOUTH", "S"),
@@ -180,14 +181,14 @@ public class Direction {
 
     //Print details about direction for debugging
     public void print() {
-        System.out.println("====================================");
-        System.out.println("    Direction: " + this.directionType.toString());
-        System.out.println("====================================");
-        System.out.println("ID: " + this.id);
-        System.out.println("From: " + this.from.name());
-        System.out.println("To: " + this.to.name());
-        System.out.println("Locked? : " + this.isLocked);
-        System.out.println("Lock Pattern: " + this.lockPattern + "\n");
+        io.display("====================================");
+        io.display("    Direction: " + this.directionType.toString());
+        io.display("====================================");
+        io.display("ID: " + this.id);
+        io.display("From: " + this.from.name());
+        io.display("To: " + this.to.name());
+        io.display("Locked? : " + this.isLocked);
+        io.display("Lock Pattern: " + this.lockPattern + "\n");
     }
 
     //Attempt to use an artifact in this direction

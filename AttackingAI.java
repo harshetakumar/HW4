@@ -2,12 +2,14 @@ import java.util.HashMap;
 import java.util.Random;
 
 public class AttackingAI implements DecisionMaker {
+    
+    private IO io = new IO();
 
     @Override
     public Move getMove(Character character, Place place) {
 
         //Used to debug what the status of the NPC characters are currently. If you want to check what
-        //move the NPC is doing then we would just uncomment the System.out.println() in each move
+        //move the NPC is doing then we would just uncomment the io.display() in each move
         //character.print();
 
         Random rand = new Random();
@@ -17,7 +19,7 @@ public class AttackingAI implements DecisionMaker {
 
 
         //Used to debug the attacker to make sure the attacker is fetching an attack
-//        System.out.println("Fetching attack for : " + character.name());
+//        io.display("Fetching attack for : " + character.name());
 
         //Get all the available characters from current place to see who to attack
         HashMap<String, Character> availableCharacters = place.getCharacters();
@@ -33,9 +35,9 @@ public class AttackingAI implements DecisionMaker {
 
 
                     //Notify the player that they have been attacked by this attacker
-                    System.out.println("================================================");
-                    System.out.println("* " + availableCharacter.name() + " got attacked by " + character.name());
-                    System.out.println("================================================");
+                    io.display("================================================");
+                    io.display("* " + availableCharacter.name() + " got attacked by " + character.name());
+                    io.display("================================================");
 
                     //Create attack object on selected character
                     return new Attack(place, availableCharacter);

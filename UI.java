@@ -2,6 +2,8 @@ import java.util.Scanner;
 
 public class UI implements DecisionMaker {
 
+    private IO io = new IO();
+
     /**
      * Returns a move object that a Player will execute based on what the player has typed in
      *
@@ -11,8 +13,6 @@ public class UI implements DecisionMaker {
      */
     @Override
     public Move getMove(Character character, Place place) {
-        Scanner scanner = KeyboardScanner.getKeyboardScanner();
-        String userInput;
 
         //Check if the user is not in an exit place, if so then remove the character from game
         if (place.id() == 0 || place.id() == 1) {
@@ -25,35 +25,35 @@ public class UI implements DecisionMaker {
         }
 
         //Display the player's name along with information about where they are
-        System.out.println("==============================");
-        System.out.println("PLAYER: " + character.name());
-        System.out.println("Health: " + character.checkHealth() + "/100");
-        System.out.println("==============================");
+        io.display("==============================");
+        io.display("PLAYER: " + character.name());
+        io.display("Health: " + character.checkHealth() + "/100");
+        io.display("==============================");
 
         if (!place.checkIllumination()) {
             //Notify user that the place is dark
-            System.out.println("This place is pitch black. You can't even see your hands in front of you.");
+            io.display("This place is pitch black. You can't even see your hands in front of you.");
         } else {
             //If the current place is not a dark place then the user can see the location and directions
-            System.out.println("Current Location: " + place.name() + ": " + place.description());
+            io.display("Current Location: " + place.name() + ": " + place.description());
         }
 
 
         //Checks to see if the current place has any available artifacts to display
         if (place.getAvailableArtifacts().size() > 0) {
-            System.out.println("Artifacts Available: ");
+            io.display("Artifacts Available: ");
             for (Artifact artifact : place.getAvailableArtifacts().values()) {
-                System.out.println(">" + artifact.name() + ": " + artifact.description());
-                System.out.println("Mobility: " + artifact.size());
-                System.out.println("Value: " + artifact.value());
+                io.display(">" + artifact.name() + ": " + artifact.description());
+                io.display("Mobility: " + artifact.size());
+                io.display("Value: " + artifact.value());
             }
-            System.out.println();
+            io.display("\n");
         }
 
         //Checks to see if there are any other characters in the same place the player is in.
         //If so then display them
         if (place.getCharacters().size() > 1) {
-            System.out.println("Characters Present: ");
+            io.display("Characters Present: ");
             for (Character charactersPresent : place.getCharacters().values()) {
                 //Print out all the other characters in the current place not including the current character
                 if (charactersPresent.name() != character.name()) {
@@ -63,8 +63,8 @@ public class UI implements DecisionMaker {
         }
         //Read in user command to determine what they want to do
         System.out.print("ENTER A COMMAND>");
-        userInput = scanner.nextLine();
-        System.out.println();
+        String userInput = io.getLine();
+        io.display("\n");
 
         //If user types in look then display the location name and the artifacts in the place
         if (userInput.toLowerCase().trim().startsWith("look")) {

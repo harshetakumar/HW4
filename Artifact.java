@@ -8,6 +8,7 @@ public class Artifact {
     private int mobility;
     private int keyPattern;
     private int id;
+    private IO io = new IO();
 
     public Artifact() {
     }
@@ -83,14 +84,14 @@ public class Artifact {
 
     //Prints out artifact information for debugging purposes
     public void print() {
-        System.out.println("====================================");
-        System.out.println("    Artifact: " + name());
-        System.out.println("====================================");
-        System.out.println("Description: " + description());
-        System.out.println("ID: " + this.id);
-        System.out.println("Value: " + value());
-        System.out.println("Mobility: " + size());
-        System.out.println("Key Pattern: " + use());
+        io.display("====================================");
+        io.display("    Artifact: " + name());
+        io.display("====================================");
+        io.display("Description: " + description());
+        io.display("ID: " + this.id);
+        io.display("Value: " + value());
+        io.display("Mobility: " + size());
+        io.display("Key Pattern: " + use());
     }
 
 

@@ -2,6 +2,7 @@ public class Drop implements Move {
     private Place place;
     private Character character;
     private String artifact;
+    private IO io = new IO();
 
     /**
      * Creates a drop object that will try to drop an artifact from a character's inventory
@@ -34,11 +35,11 @@ public class Drop implements Move {
                 this.character.removeArtifact(this.artifact);
 
                 //Notify user of event
-                System.out.println("================================================");
-                System.out.println("PLAYER: " + character.name() + " dropped " + this.artifact);
-                System.out.println("================================================\n");
+                io.display("================================================");
+                io.display("PLAYER: " + character.name() + " dropped " + this.artifact);
+                io.display("================================================\n");
             } else {
-                System.out.println("You are not carrying that item");
+                io.display("You are not carrying that item");
             }
         } else {
             //If character is NPC then we suppress the output
@@ -46,7 +47,7 @@ public class Drop implements Move {
                 this.place.addArtifact(this.character.retrieveArtifactFromInventory(this.artifact));
                 this.character.removeArtifact(this.artifact);
             } else {
-                System.out.println("Error: NPC is trying to drop item that it does not have");
+                io.display("Error: NPC is trying to drop item that it does not have");
             }
         }
     }

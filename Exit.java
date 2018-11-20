@@ -2,6 +2,7 @@ import java.util.HashMap;
 
 public class Exit implements Move {
     private Character character;
+    private IO io = new IO();
 
     /**
      * Creates a exit object that will remove a character from the game
@@ -22,9 +23,9 @@ public class Exit implements Move {
     public void execute() {
 
         //Notify user of event
-        System.out.println("================================================");
-        System.out.println("PLAYER: " + character.name() + " has left the game");
-        System.out.println("================================================\n");
+        io.display("================================================");
+        io.display("PLAYER: " + character.name() + " has left the game");
+        io.display("================================================\n");
 
         //Tell the character to leave the game
         character.leaveGame();

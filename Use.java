@@ -3,6 +3,7 @@ public class Use implements Move {
     private Place place;
     private Character character;
     private String artifact;
+    private IO io = new IO();
 
     /**
      * Creates a Use object for a character that is trying to use an artifact in their inventory
@@ -30,9 +31,9 @@ public class Use implements Move {
             if (this.character.checkForArtifact(this.artifact)) {
 
                 //Notify player of the event
-                System.out.println("================================================");
-                System.out.println("* PLAYER: " + character.name() + " used " + this.artifact);
-                System.out.println("================================================");
+                io.display("================================================");
+                io.display("* PLAYER: " + character.name() + " used " + this.artifact);
+                io.display("================================================");
 
                 //Retrieve artifact
                 Artifact retrievedArtifact = this.character.retrieveArtifactFromInventory(this.artifact);
@@ -53,13 +54,13 @@ public class Use implements Move {
                 } else {
                     //Try using specified artifact in current place and check if anything happened
                     if (this.place.useKey(retrievedArtifact)) {
-                        System.out.println("A door was unlocked\n");
+                        io.display("A door was unlocked\n");
                     } else {
-                        System.out.println("Nothing happened\n");
+                        io.display("Nothing happened\n");
                     }
                 }
             } else {
-                System.out.println("Can't use it if you don't have it");
+                io.display("Can't use it if you don't have it");
             }
         } else {
 
@@ -67,7 +68,7 @@ public class Use implements Move {
             if (this.character.checkForArtifact(this.artifact)) {
                 this.place.useKey(this.character.retrieveArtifactFromInventory(this.artifact));
             } else {
-                System.out.println("Error: NPC is trying to use artifact that it does not have");
+                io.display("Error: NPC is trying to use artifact that it does not have");
             }
         }
     }

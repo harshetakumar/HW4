@@ -5,6 +5,7 @@ public class Give implements Move {
 
     private Place place;
     private Character character;
+    private IO io = new IO();
 
     //constructor
     public Give(Place place, Character character) {
@@ -23,7 +24,7 @@ public class Give implements Move {
         this.character.increaseHealth(randomReplenish);
 
         //Used for debugging purposes
-        //System.out.println(character.name() + " gained " + randomReplenish + " points of health");
+        //io.display(character.name() + " gained " + randomReplenish + " points of health");
     }
 
 }

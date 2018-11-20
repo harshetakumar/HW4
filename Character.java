@@ -13,6 +13,7 @@ public class Character {
     private static HashMap<Integer, Character> availableCharacters = new HashMap<Integer, Character>();
     private HashMap<String, Artifact> inventory = new HashMap<String, Artifact>();
     private boolean isPlaying = true;
+    private static IO io = new IO();
 
     /**
      * Creates a character object by passing in a file
@@ -80,7 +81,7 @@ public class Character {
         if (availableCharacters.containsKey(id)) {
             return availableCharacters.get(id);
         } else {
-            System.out.println("Unable to find character with id of " + id);
+            io.display("Unable to find character with id of " + id);
             return null;
         }
     }
@@ -99,28 +100,28 @@ public class Character {
 
     //Used to display character information in game
     public void display() {
-        System.out.println(">" + this.name());
-        System.out.println("Description: " + this.description);
+        io.display(">" + this.name());
+        io.display("Description: " + this.description);
     }
 
     //Used to debug the character
     public void print() {
-        System.out.println("====================================");
-        System.out.println("Character: " + name());
-        System.out.println("====================================");
-        System.out.println("ID: " + this.id);
-        System.out.println("Current location: " + this.current.name());
-        System.out.println("Name: " + this.name);
-        System.out.println("Description: " + this.description + "\n");
-        System.out.println("Inventory: ");
+        io.display("====================================");
+        io.display("Character: " + name());
+        io.display("====================================");
+        io.display("ID: " + this.id);
+        io.display("Current location: " + this.current.name());
+        io.display("Name: " + this.name);
+        io.display("Description: " + this.description + "\n");
+        io.display("Inventory: ");
         for (Artifact artifact : this.inventory.values()) {
-            System.out.println(artifact.name());
+            io.display(artifact.name());
         }
     }
 
     //Prints all the characters in the game
     public static void printAll() {
-        System.out.println("Number of characters: " + availableCharacters.size());
+        io.display("Number of characters: " + availableCharacters.size());
         for (Character character : availableCharacters.values()) {
             character.print();
         }

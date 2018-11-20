@@ -11,6 +11,7 @@ public class Game {
 
     private String gameName;
     private static HashMap<String, Character> characters = new HashMap<String, Character>();
+    private IO io = new IO();
 
 
     /**
@@ -40,14 +41,14 @@ public class Game {
 
                 //Print out game version
                 version = Double.parseDouble(parsedFileLine[1].trim());
-                System.out.println("Version: " + version);
+                io.display("Version: " + version);
 
                 //Print out game name
                 String gameName = "";
                 for (int i = 2; i < parsedFileLine.length; i++) {
                     gameName += parsedFileLine[i] + " ";
                 }
-                System.out.println("Game Name: " + gameName);
+                io.display("Game Name: " + gameName);
                 this.gameName = gameName;
             } else if (parsedFileLine[0].equals("PLACES")) {
 
@@ -172,7 +173,7 @@ public class Game {
                 String name = input.nextLine();
                 System.out.print("[Player " + i + "] Enter a description of yourself: ");
                 String description = input.nextLine();
-                System.out.println();
+                io.display("\n");
 
                 Player player = new Player(i, startingLocation, name, description);
                 characters.put(player.name(), player);
@@ -185,7 +186,7 @@ public class Game {
 
     //Print game details for debugging
     public void print() {
-        System.out.println("Name of the game: " + this.gameName);
+        io.display("Name of the game: " + this.gameName);
     }
 
     /**
@@ -198,9 +199,9 @@ public class Game {
         Scanner input = KeyboardScanner.getKeyboardScanner();
 
         //Print out welcome title
-        System.out.println("------------------------------------");
-        System.out.println("| Welcome to " + this.gameName + " |");
-        System.out.println("------------------------------------");
+        io.display("------------------------------------");
+        io.display("| Welcome to " + this.gameName + " |");
+        io.display("------------------------------------");
 
 
         boolean endGame = false;
@@ -226,6 +227,6 @@ public class Game {
 
         }
 
-        System.out.println("Thanks for playing!");
+        io.display("Thanks for playing!");
     }
 }

@@ -1,6 +1,7 @@
 public class Inventory implements Move {
 
     private Character character;
+    private IO io = new IO();
 
     /**
      * Creates a Inventory object in where it displays a character's current inventory
@@ -21,31 +22,31 @@ public class Inventory implements Move {
         int totalMobility = 0;
 
         //Display the character's inventory
-        System.out.println("================================================");
-        System.out.println("PLAYER: " + character.name() + " Inventory");
-        System.out.println("================================================");
+        io.display("================================================");
+        io.display("PLAYER: " + character.name() + " Inventory");
+        io.display("================================================");
         for (Artifact userArtifact : this.character.retrieveInventory().values()) {
-            System.out.println("Name: " + userArtifact.name());
-            System.out.println("Value: " + userArtifact.value());
-            System.out.println("Description: " + userArtifact.description());
+            io.display("Name: " + userArtifact.name());
+            io.display("Value: " + userArtifact.value());
+            io.display("Description: " + userArtifact.description());
 
             //Check to see if artifact weights more than one pound
             if (userArtifact.size() > 1) {
-                System.out.println("Mobility: " + userArtifact.size() + " pounds");
+                io.display("Mobility: " + userArtifact.size() + " pounds");
             } else {
-                System.out.println("Mobility: " + userArtifact.size() + " pound.");
+                io.display("Mobility: " + userArtifact.size() + " pound.");
             }
 
             //Calculate total value and total mobility in inventory
             totalValue += userArtifact.value();
             totalMobility += userArtifact.size();
-            System.out.println();
+            io.display("\n");
 
         }
 
         //Print out statistics
-        System.out.println("Total Value: " + totalValue);
-        System.out.println("Total Mobility: " + totalMobility);
-        System.out.println();
+        io.display("Total Value: " + totalValue);
+        io.display("Total Mobility: " + totalMobility);
+        io.display("\n");
     }
 }
