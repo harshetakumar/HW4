@@ -6,7 +6,7 @@ public class IO {
     public static final int GUI_1 = 1;
     public static final int GUI_2 = 2;
     public static final int GUI_3 = 3;
-
+    private UserInterface implementor;
     public IO()
     {
 
@@ -27,7 +27,14 @@ public class IO {
 
     public void selectInterface(int gui)
     {
-
+        switch(gui)
+        {
+            case 1:
+                implementor = new PlayerGUI();
+                break;
+            default:
+                implementor = null;
+        }
     }
 
 }

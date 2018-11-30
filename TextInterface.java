@@ -1,4 +1,4 @@
-public class TextInterface implements UserInteface {
+public class TextInterface implements UserInterface {
 
     @Override
     public void display(String string)

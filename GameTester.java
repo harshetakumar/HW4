@@ -37,6 +37,7 @@ public class GameTester {
             io.display("Could not find file.");
         }
 
+        io.selectInterface(IO.GUI_1);
         //Pass gdf file to game constructor
         Game myGame = new Game(input);
 
