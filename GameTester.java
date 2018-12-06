@@ -13,6 +13,7 @@ public class GameTester {
 
     public static void main(String[] args) {
 
+        io.selectInterface(IO.TEXT);
 
         //Print out student information
         io.display("Giovanni Alanis ACCC: galani3");
@@ -37,7 +38,6 @@ public class GameTester {
             io.display("Could not find file.");
         }
 
-        io.selectInterface(IO.GUI_1);
         //Pass gdf file to game constructor
         Game myGame = new Game(input);
 

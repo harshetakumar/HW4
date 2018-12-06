@@ -2,7 +2,12 @@ import java.util.Scanner;
 
 public class UI implements DecisionMaker {
 
-    private IO io = new IO();
+    private IO io;
+
+    public UI()
+    {
+        io = new IO();
+    }
 
     /**
      * Returns a move object that a Player will execute based on what the player has typed in
@@ -13,6 +18,8 @@ public class UI implements DecisionMaker {
      */
     @Override
     public Move getMove(Character character, Place place) {
+
+        io.updateGUI(character, place);
 
         //Check if the user is not in an exit place, if so then remove the character from game
         if (place.id() == 0 || place.id() == 1) {
@@ -61,10 +68,18 @@ public class UI implements DecisionMaker {
                 }
             }
         }
-        //Read in user command to determine what they want to do
-        System.out.print("ENTER A COMMAND>");
-        String userInput = io.getLine();
-        io.display("\n");
+
+        String userInput;
+        if(io.checkGUI() == 1)
+        {
+            userInput = io.getLine();
+        }
+        else {
+            //Read in user command to determine what they want to do
+            io.display("ENTER A COMMAND>");
+            userInput = io.getLine();
+            io.display("\n");
+        }
 
         //If user types in look then display the location name and the artifacts in the place
         if (userInput.toLowerCase().trim().startsWith("look")) {
@@ -110,7 +125,7 @@ public class UI implements DecisionMaker {
         }
         //If user types in random gibberish, then let them know
         else {
-            return new NotFound(character);
+            return new Wait();
         }
 
     }

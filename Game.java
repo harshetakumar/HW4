@@ -11,7 +11,7 @@ public class Game {
 
     private String gameName;
     private static HashMap<String, Character> characters = new HashMap<String, Character>();
-    private IO io = new IO();
+    private IO io;
 
 
     /**
@@ -23,7 +23,6 @@ public class Game {
      */
     //Creates a new game object with it's name
     Game(Scanner inputFile) {
-
         String[] fileLine;
         String[] parsedFileLine;
         int startingLocation = 0;
@@ -41,14 +40,14 @@ public class Game {
 
                 //Print out game version
                 version = Double.parseDouble(parsedFileLine[1].trim());
-                io.display("Version: " + version);
+                System.out.println("Version: " + version);
 
                 //Print out game name
                 String gameName = "";
                 for (int i = 2; i < parsedFileLine.length; i++) {
                     gameName += parsedFileLine[i] + " ";
                 }
-                io.display("Game Name: " + gameName);
+                System.out.println("Game Name: " + gameName);
                 this.gameName = gameName;
             } else if (parsedFileLine[0].equals("PLACES")) {
 
@@ -186,7 +185,7 @@ public class Game {
 
     //Print game details for debugging
     public void print() {
-        io.display("Name of the game: " + this.gameName);
+        System.out.println("Name of the game: " + this.gameName);
     }
 
     /**
@@ -194,6 +193,9 @@ public class Game {
      * Once everyone has made a move, the game executes the moves and then repeats the cycle.
      */
     public void play() {
+
+        io = new IO();
+        io.selectInterface(IO.GUI_1, this.gameName);
 
         //Get keyboard scanner
         Scanner input = KeyboardScanner.getKeyboardScanner();

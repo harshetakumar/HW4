@@ -1,14 +1,18 @@
+import java.util.Scanner;
+
 public class TextInterface implements UserInterface {
 
     @Override
-    public void display(String string)
+    public void display(String text)
     {
-
+        System.out.println(text);
     }
 
     @Override
     public String getLine()
     {
-        return "TODO";
+        Scanner scanner = KeyboardScanner.getKeyboardScanner();
+        String userInput = scanner.nextLine();
+        return userInput;
     }
 }

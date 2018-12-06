@@ -13,7 +13,7 @@ public class Character {
     private static HashMap<Integer, Character> availableCharacters = new HashMap<Integer, Character>();
     private HashMap<String, Artifact> inventory = new HashMap<String, Artifact>();
     private boolean isPlaying = true;
-    private static IO io = new IO();
+    private IO io = new IO();
 
     /**
      * Creates a character object by passing in a file
@@ -81,7 +81,7 @@ public class Character {
         if (availableCharacters.containsKey(id)) {
             return availableCharacters.get(id);
         } else {
-            io.display("Unable to find character with id of " + id);
+            System.out.println("Unable to find character with id of " + id);
             return null;
         }
     }
@@ -121,7 +121,7 @@ public class Character {
 
     //Prints all the characters in the game
     public static void printAll() {
-        io.display("Number of characters: " + availableCharacters.size());
+        System.out.println("Number of characters: " + availableCharacters.size());
         for (Character character : availableCharacters.values()) {
             character.print();
         }
