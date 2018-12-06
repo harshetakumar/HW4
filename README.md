@@ -1,4 +1,4 @@
-# CS342 Homework 4
+# CS342 Homework 5
 Giovanni Alanis, Harsheta Kumar, Prachi Thakkar
 ____
 
@@ -14,35 +14,15 @@ NOTE: There will be a file of version 5.2 called mysticcity5.2.gdf to be used.
 
 #### Updates to game:
 
-- Giovanni Alanis
-    - NPC characters can now be of type Attacker or Giver. 
-    - Attacker will deal damage to any player that is in the same Place and notify the player that they are being attacked.
-    - Artifacts have now been extended to HealthArtifacts and LightArtifacts. 
-    - HealthArtifacts will recover a player's health by a certain amount. 
-    - LightArtifacts will illuminate a Place if it is of type DarkPlace and it is currently dark.
-    - Died move will notify the user if they have health less than zero and remove them from the game. 
-    - Added AttackingAI for Attacker to randomly pick when an attacker will deal damage. 
-    - Attack move takes in a character to deal random damage to. 
-
-- Harsheta Kumar
-    - Giver will heal any player that is in the same Place as the player and notify them that they are being healed. 
-    - Added GivingAI for GIVER to heal any players in current place. 
-    - Giver randomly gives the selected character a random number of health points. If the character recieves a number of health points that would result in the health points exceeding 100, then their health is just set to the maximum number of points which is a hundred. 
-    - Give move takes in a character and randomly decides how much health to regenerate. 
-
-- Prachi Thakkar
-    - Place has been extended to implement dark places in the map. 
-    - DarkPlace can be illuminated using LightArtifacts. 
-
-
-#### Changes made to GDF file (5.2): 
- - NPC characters now have an additional tag to allow identification of what type of NPC it should be (e.g GIVER, ATTACKER, ETC)
- - Artifacts have an additional tag as well to allow identification of what type of artifact it should be.
- - A magical fairy was added as a Giver to provide health regeneration in the Pool of Enchantment. 
- - Added a three-headed cyclops in room 105 as an Attacker. 
- - Made the potions lab of type DarkPlace, so it will not allow players to be able to 'LOOK or 'GET' anything until the place has been illuminated by an artifact.
- - Added a torch as a LightArtifact to Zaphod's inventory to allow illumination of dark places.
- - Added a health pack as a HealthArtifact to Zaphod's inventory for a one time use. 
+- Text GUI has been added for player characters.
+- GUI has been added for player characters.
+- Players can switch between the GUI and text GUI.
+- Players can now click on the inventory button and check their inventory.
+- Inventory pop up now contains drop and use buttons to interact with artifacts player is holding.
+- Players can now click on the look button to look around in the current place.
+- Look pop up now contains a get button to pick up any artifacts that might be present
+- Players can now move in any direction by clicking on the available direction buttons. 
+- Added image icons to the inventory and look buttons
  
 #### Getting Started: 
 
