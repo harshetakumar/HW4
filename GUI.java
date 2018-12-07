@@ -275,7 +275,7 @@ public class GUI implements UserInterface {
                 if (c.retrieveInventory().size() > 0) {
 
                     //Create a pop up to display the player's current inventory
-                    JDialog inventoryDialog = new JDialog(mainFrame, c.name() + " Inventory");
+                    final JDialog inventoryDialog = new JDialog(mainFrame, c.name() + " Inventory");
                     inventoryDialog.setLayout(new GridLayout(0, 2));
                     inventoryDialog.setSize(300, 200);
                     inventoryDialog.setLocationRelativeTo(null);
@@ -303,7 +303,7 @@ public class GUI implements UserInterface {
                         artifactNames.addElement(artifact.name());
                     }
 
-                    JList artifactList = new JList(artifactNames);
+                    final JList artifactList = new JList(artifactNames);
                     artifactList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
                     JScrollPane artifactScrollList = new JScrollPane(artifactList);
 
@@ -366,7 +366,7 @@ public class GUI implements UserInterface {
             else if (e.getActionCommand() == "LOOK") {
 
                 //Create pop up to display when the look button is clicked
-                JDialog lookDialog = new JDialog(mainFrame, "Look");
+                final JDialog lookDialog = new JDialog(mainFrame, "Look");
                 lookDialog.setLayout(new GridLayout(2, 1));
                 lookDialog.setSize(500, 400);
                 lookDialog.setLocationRelativeTo(null);
@@ -419,7 +419,7 @@ public class GUI implements UserInterface {
                         artifactNames.addElement(artifact.name());
                     }
 
-                    JList lookArtifactList = new JList(artifactNames);
+                    final JList lookArtifactList = new JList(artifactNames);
                     lookArtifactList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
                     JScrollPane artifactScrollList = new JScrollPane(lookArtifactList);
 

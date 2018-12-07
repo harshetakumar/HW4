@@ -23,6 +23,10 @@ NOTE: There will be a file of version 5.2 called mysticcity5.2.gdf to be used.
 - Look pop up now contains a get button to pick up any artifacts that might be present
 - Players can now move in any direction by clicking on the available direction buttons. 
 - Added image icons to the inventory and look buttons
+
+####Bugs:
+- There is one bug where the lost wanderer sometimes gets assigned a random place that happens to be an exit and leaves the game right away.
+- It seems to be due to how the random place function was written for it
  
 #### Getting Started: 
 
